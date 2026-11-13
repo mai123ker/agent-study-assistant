@@ -1,0 +1,36 @@
+# ==== 核心 Web 框架 ====
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# ==== 数据校验 / 配置 ====
+pydantic==2.10.4
+pydantic-settings==2.7.0
+python-dotenv==1.0.1
+
+# ==== HTTP 客户端（调 LLM / Embedding 接口用）====
+httpx==0.28.1
+
+# ==== 文档解析（Day 8）====
+pypdf==5.1.0
+
+# ==== 测试 ====
+pytest==8.3.4
+
+# ---- 以下按需安装，装不上不影响主流程 ----
+#
+# 向量库持久化（Day 10）：
+#   不装也能跑 —— vector_backend=memory 是纯 Python 实现，零依赖
+#   chromadb==0.5.23
+#
+# 本地 Embedding（Day 10）：
+#   体积大（含 torch，约 2GB），首次还要下模型。网络不好就先用
+#   embedding_provider=api，别硬扛
+#   sentence-transformers==3.3.1
+#
+# 表格多的 PDF 解析（Day 8）：
+#   pypdf 对表格很弱，表格多的文档换 pdfplumber
+#   pdfplumber==0.11.4
+#
+# 中文分词（Day 11）：
+#   当前用 CJK 字符二元组代替，零依赖。想要更好的分词效果再装
+#   jieba==0.42.1

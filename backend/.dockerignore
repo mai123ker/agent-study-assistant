@@ -1,0 +1,45 @@
+# 不进入构建上下文的东西 —— 越少越快，也越安全
+
+# 虚拟环境：容器里会重新装，带进去只会让构建慢十倍
+.venv/
+venv/
+env/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 测试与工具配置
+tests/
+.coverage
+htmlcov/
+
+# 数据：用 volume 挂载，不打进镜像
+data/
+
+# 环境变量：绝对不能进镜像
+.env
+.env.local
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 文档
+*.md
+!README.md
+
+# 容器编排自身
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 日志
+*.log
+logs/

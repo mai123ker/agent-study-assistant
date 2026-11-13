@@ -1,0 +1,27 @@
+# 一条命令起服务：docker compose up
+#
+# 为什么一个服务也要写 compose？
+# 因为「一键启动」本身就是简历上的一句话：
+# 从「我写了个项目」变成「这个项目可以一键启动」——
+# 对实习岗来说这是最划算的一笔时间投入。
+#
+# 以后加 Redis / PostgreSQL / 向量库服务，只在这里加几行，不用改代码。
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: study-assistant-backend
+    ports:
+      - "8000:8000"
+
+    # 复用你本地的 .env（含 LLM key）。没这个文件会启动失败，先 cp .env.example .env
+    env_file:
+      - .env
+
+    # 挂载数据目录：容器删了，索引和文档还在
+    volumes:
+      - ./data:/app/data
+
+    restart: unless-stopped
